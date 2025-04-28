@@ -2,7 +2,7 @@ import uvicorn
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from starlette.middleware.sessions import SessionMiddleware
-from app.routers import auth, password_reset
+from app.routers import auth, password_reset, job, log, csv_files
 from app.core.config import settings
 from sqlalchemy import text
 from app.database.session import get_session
@@ -37,7 +37,10 @@ app.add_middleware(
 )
 
 app.include_router(auth.router)
+app.include_router(job.router)
 app.include_router(password_reset.router)
+app.include_router(log.router)
+app.include_router(csv_files.router)
 
 
 if __name__ == "__main__":

@@ -1,5 +1,5 @@
-from pydantic import BaseModel, EmailStr, Field
-from typing import Optional
+from pydantic import BaseModel
+
 # Login request
 class UserLogin(BaseModel):
     username: str
@@ -11,16 +11,6 @@ class UserInfo(BaseModel):
     username: str
     email: str
     role: str | None = None
-
-class UserRegister(BaseModel):
-    username: str
-    password: str
-    first_name: str
-    last_name: str
-    email: EmailStr
-    country: str
-    affiliation: str
-    research: Optional[str] = None
 
 
 

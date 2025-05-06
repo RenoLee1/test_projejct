@@ -1,7 +1,7 @@
-from typing import Optional, List
+from typing import Optional
 from datetime import datetime
 
-from sqlmodel import Field, SQLModel, Relationship
+from sqlmodel import Field, SQLModel
 
 # user table
 class User(SQLModel, table=True):
@@ -19,8 +19,3 @@ class User(SQLModel, table=True):
     role: Optional[str] = Field(default=None, max_length=50, description="role: admin/user")
     login_time: Optional[datetime] = Field(default=None, description="Last login time")
     login_ip: Optional[str] = Field(default=None, max_length=45, description="Last login IP address")
-    
-    # Add relationship with jobs (one-way relationship)
-    jobs: List["Job"] = Relationship(
-        sa_relationship_kwargs={"lazy": "selectin"}
-    )
